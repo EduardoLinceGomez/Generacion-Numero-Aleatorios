@@ -5,16 +5,32 @@
 \usepackage{bachelorstitlepageUNAM} % Portada tesis UNAM
 \usepackage{titlesec}
 \usepackage{xcolor}
+\usepackage{lettrine}
+
+% Comando para iniciales capitulares uniformes en capítulos
+\newcommand{\chapteropening}[3][]{%
+  \lettrine[lines=3,lhang=0.15,#1]{#2}{#3}%
+}
 
 % Definir color oliva
 \definecolor{olive}{rgb}{0.33, 0.42, 0.18}
+\definecolor{chapterblue}{RGB}{16,58,116}
+
+\newcommand{\ChapterLabel}[1]{%
+  \begin{tikzpicture}[baseline={([yshift=-1.5ex]current bounding box.south)}]
+    \node[inner sep=0pt,minimum width=2.4cm,minimum height=2.9cm,fill=chapterblue] (num) {\color{white}\bfseries\fontsize{40}{44}\selectfont #1};
+    \node[anchor=north,rotate=90,font=\bfseries\footnotesize,text=chapterblue] at ([xshift=-0.95cm]num.west) {\textsc{Capítulo}};
+  \end{tikzpicture}%
+}
 
 % Estilo de capítulos
 \titleformat{\chapter}[display]
-  {\normalfont\huge\bfseries} % fuente grande y negrita
-  {\color{dark}\fontsize{50}{60}\selectfont\thechapter} % número del capítulo, muy grande y en rojo
-  {1ex} % separación entre número y título
-  {\Huge} % estilo del título
+  {\normalfont}
+  {\ChapterLabel{\thechapter}}
+  {1.5em}
+  {\Huge\bfseries}
+
+\titlespacing*{\chapter}{0pt}{0pt}{3.5ex}
 	
 \usepackage[titletoc]{appendix} % Añade palabra «Apéndice» en Índice y define el ambiente appendices
 \usepackage{tocbibind}
