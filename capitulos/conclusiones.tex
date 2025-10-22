@@ -1,0 +1,18 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+La tesis exploró la generación de números pseudoaleatorios utilizando tres sistemas dinámicos: el mapeo logístico, el mapeo tienda y el autómata celular unidimensional conocido como regla 30. El objetivo principal fue evaluar la calidad de los números generados en términos de uniformidad e independencia. Se emplearon diversas metodologías, incluyendo análisis de histogramas, comparación de momentos y funciones de representación, pruebas de independencia y de uniformidad.
+
+Los resultados destacaron que tanto el mapeo tienda como la regla 30 mostraron un mejor desempeño en comparación con el mapeo logístico. Se identificó que el mapeo logístico, a pesar de ser un ejemplo clásico de caos, produce datos que requieren transformaciones adicionales para lograr una distribución uniforme, lo cual puede impactar negativamente en su eficiencia y calidad. Un hallazgo significativo fue que el reordenamiento de datos mejora la independencia de la muestra en todos los experimentos realizados. 
+
+Además, se exploró la representación de estos sistemas en términos de mapeos en un espacio de variables aleatorias, encontrando que el mapeo tienda tiene como punto fijo a la variable aleatoria uniforme en $[0,1]$, y el mapeo logístico a la densidad $Beta(\frac{1}{2},\frac{1}{2})$. Aunque una prueba formal de que estos son puntos fijos atractores está fuera del alcance de esta tesis, se verificó numéricamente que parecen ser atractores.
+
+La calidad de los números pseudoaleatorios generados es crucial, ya que su implementación en experimentos que requieren una manipulación intensiva depende en gran medida de su robustez y precisión. Los sistemas dinámicos simples ofrecen la ventaja de un menor consumo computacional, lo cual es especialmente importante para la eficiencia en aplicaciones con recursos limitados. Las implicaciones de estos hallazgos subrayan la importancia de elegir métodos simples y eficientes para la generación de números pseudoaleatorios, especialmente en aplicaciones donde la eficiencia computacional es crítica. 
+
+A lo largo de este trabajo, aprendí que sistemas dinámicos relativamente sencillos pueden generar comportamiento caótico y producir números pseudoaleatorios de calidad aceptable. Esto refuerza la idea de que el caos, a pesar de su complejidad, puede ser generado y estudiado a través de modelos matemáticos accesibles. La exploración de los sistemas dinámicos en conjunción con la probabilidad ha sido una experiencia enriquecedora, que resalta la interconexión y la riqueza de estas ramas de la matemática.
+
+Este estudio abre las puertas para futuras investigaciones, donde se podrían explorar otras configuraciones de sistemas dinámicos discretos caóticos así como la mezcla de varios sistemas para una optimización de los resultados. Otra futura implemetación puede ser la creación de algún repositorio y/o paquetería para comparar resultados de experimentos con distintos mapeos. También hay otra gran oportunidad de profundizar en la teoría de sistemas dinámicos aleatorios ahondando en las distribuciones covergentes. El caos, como concepto matemático joven y prometedor, tiene un vasto potencial de aplicación en múltiples disciplinas, y un mayor entendimiento del mismo puede llevar a importantes avances en diversas áreas del conocimiento.
+
+%https://en.wikipedia.org/wiki/Chaos_theory
+
+\end{document}

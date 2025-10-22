@@ -1,0 +1,63 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}
+    % Number of rows and columns
+    \def\rows{20}
+    \def\cols{41}
+    
+    % Initial condition: a single black cell in the middle
+    \matrix (m) [matrix of nodes, cells={nodes={draw, minimum size=5mm, anchor=center}}] {
+        \foreach \i in {1,...,\cols} {
+            \ifnum\i=\numexpr\cols/2+1\relax
+                |[fill=black]| & 
+            \else
+                |[fill=white]| & 
+            \fi
+        } \\
+    };
+
+    % Iterate through the rows
+    \foreach \j in {2,...,\rows} {
+        \pgfmathtruncatemacro{\prev}{\j-1}
+        \foreach \i in {2,...,\numexpr\cols-1} {
+            \pgfmathtruncatemacro{\left}{\i-1}
+            \pgfmathtruncatemacro{\right}{\i+1}
+            \pgfmathtruncatemacro{\rule}{
+                ifthenelse(
+                    m-\prev-\left == 1,
+                    ifthenelse(
+                        m-\prev-\i == 1,
+                        ifthenelse(
+                            m-\prev-\right == 1,
+                            0,  % 111 -> 0
+                            1), % 110 -> 1
+                        ifthenelse(
+                            m-\prev-\right == 1,
+                            1,  % 101 -> 1
+                            1)),% 100 -> 1
+                    ifthenelse(
+                        m-\prev-\i == 1,
+                        ifthenelse(
+                            m-\prev-\right == 1,
+                            0,  % 011 -> 0
+                            1), % 010 -> 1
+                        ifthenelse(
+                            m-\prev-\right == 1,
+                            1,  % 001 -> 1
+                            0)) % 000 -> 0
+                )
+            }
+            \ifnum\rule=1
+                \node [fill=black] at (m-\j-\i) {};
+            \else
+                \node [fill=white] at (m-\j-\i) {};
+            \fi
+        }
+    }
+\end{tikzpicture}
+
+\end{document}

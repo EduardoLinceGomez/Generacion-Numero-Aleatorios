@@ -1,0 +1,55 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+% % \textcolor{red}{Generación de números pseudoaleatorios ¿Por qué es importante?}
+
+% % Los numeros pseudoaleatorios son simulaciones, es decir, reproducen un fenomeno, la aleatoriedad. 
+% Una secuencia aleatoria, según Lehmer \cite{Lehmer1951}, se define como una serie cuyos términos son impredecibles para aquellos sin conocimiento previo, y que pasa una serie de pruebas estadísticas tradicionales, pero que puede ser generada por leyes simples.
+
+
+% % \textcolor{red}{Discución de la generación de núm pseudoaleatorios}
+% % \textcolor{red}{Hablar de la aplicabilidad en todas las areas.}
+
+% % \section{Generación de Números Pseudoaleatorios}
+% Los números pseudoaleatorios son secuencias generadas por algoritmos deterministas que, sin embargo, exhiben propiedades estadísticas similares a las de los números verdaderamente aleatorios. Son esenciales en una amplia gama de aplicaciones, desde la criptografía y las simulaciones hasta los métodos numéricos y la biología. Gracias a su capacidad de reproducir comportamientos aleatorios de manera controlada, estos números permiten avances significativos en la investigación y el desarrollo en múltiples disciplinas.
+
+% La generación de números pseudoaleatorios es un proceso crucial en muchas aplicaciones científicas y tecnológicas. Esto se debe a que los proceos aleatorios estan en practicamente todas las áreas de conocimiento, desde la física, finanzas, telecomunicaciones hasta tecnologías contemporaneas como la inteligencia artificial. A lo largo del tiempo, se han desarrollado diversos métodos para generar estas secuencias, cada uno con sus propias ventajas y desventajas.
+
+% Lo más cercano a la aleatoriedad son los \textbf{generadores físicos} de números aleatorios que utilizan fenómenos mecánicos \cite{Madiot2022}, entre otros fenómenos físicos como: decaimiento radioactivo, ruido térmico en dispositivos electrónicos o intervalos en la detección de rayos cosmicos \cite{Stipcevic2014} para producir secuencias  aleatorias. Estos métodos son altamente impredecibles y se utilizan en aplicaciones donde la máxima seguridad es crucial. Las desventajas en estos generadores estan principalmente en su lento procesamiento de los datos, sus sesgos inherentes o la incapacidad de reproducirlos. 
+
+%  Con el ascenso de la computación en la primera mitad del siglo XX y el rápido avance en el poder computacional en las decadas siguientes, los generadores de números pseudoaleatorios tomaron gran relevancia en la investigación. El nombre de psudo-aletorio o quasi-aleaotrio es debido que son obtenidos mediante algoritmos deterministas con comportamientos caóticos. Estos métodos ofrecen soluciones a las dificultades inherentes a los generadores físicos y cuyos resultados son estadisticamente indistinguibles. 
+ 
+
+% Uno de los métodos deterministas más antiguos\footnote{Tiene sus incios en 1951, siendo el GLC una versión  del generador propuesto por Lehmer \cite{Lehmer1951}.} y simples es el \textbf{generador congruencial lineal (GLC)} \cite{Knuth1997,BaltazarLarios2024}, que se define mediante la siguiente fórmula recursiva:
+% \[ X_{n+1} = (aX_n + c) \mod m \]
+% donde $X_n$ es el $n$ - ésimo número pseudoaleatorio de la secuencia, \(a\) es el multiplicador, \(c\) es el incremento, \(m\) es el módulo y el valor inicial $X_0$ es la semilla. Aunque los GLC son rápidos y fáciles de implementar, pueden tener ciclos cortos y patrones repetitivos si los parámetros no se eligen cuidadosamente. Investigaciones recientes han abordado estas limitaciones proponiendo el uso de factores dinámicos en lugar de estáticos \cite{Alhomdy2015}.
+
+% Existen también generadores más novedosos como el \textbf{Mersenne Twister}\footnote{Su nombre proviene del hecho de que la longitud del periodo corresponde a un número primo de Mersenne.}, el cuál es un generador de números pseudoaleatorios desarrollado por Makoto Matsumoto y Takuji Nishimura en 1997 \cite{Matsumoto1998}. Este método se basa en la teoría de números y utiliza una gran matriz de bits que se actualiza en cada paso para producir números aleatorios. Es conocido por su largo período de \(2^{19937}-1\) y su alta calidad estadística.
+
+% Hay una variedad enorme de algoritmos para obtener números pseudoaleatorios, en muchas áreas de la matemática como la criptografía con el \textbf{algoritmo SHA-1(Secure Hash Algorithm 1)} \cite{Eastlake2001}. Los algoritmos de tipo hash criptográfico son populares en aplicaciones de seguridad. 
+
+% En este texto usaremos la herramienta matemática que nos provee los \textbf{sistemas dinámicos discretos}. Los sistemas dinámicos, especialmente los caóticos, han ganado popularidad en la generación de números pseudoaleatorios debido a su comportamiento caótico. La investigación centrada en obtener números pseudoaleatoriso de sistemas dinámicos ha tomado relevancia con el poder de computo actual y los avances en sistemas dinámicos \cite{Behnia2011,Szczepanski2001}.
+
+
+% Los números pseudoaleatorios son secuencias numéricas generadas por algoritmos deterministas que, sin embargo, exhiben propiedades estadísticas similares a las de los números aleatorios. Una secuencia pseudoaleatoria se define como una secuencia cuyos términos son impredecibles para aquellos sin conocimiento previo y que pasa una serie de pruebas estadísticas tradicionales, pero que puede ser generada por leyes simples \cite{Lehmer1951}. La importancia de estos números radica en su aplicabilidad en una amplia gama de áreas, desde la criptografía y las simulaciones computacionales hasta los métodos numéricos y la biología. La capacidad de reproducir comportamientos aleatorios de manera controlada permite avances significativos en diversas disciplinas.
+
+% La generación de números pseudoaleatorios es crucial debido a la omnipresencia de procesos aleatorios en muchas áreas del conocimiento, desde la física y las finanzas hasta la inteligencia artificial y las telecomunicaciones. Diversos métodos han sido desarrollados a lo largo del tiempo, cada uno con ventajas y desventajas particulares.
+
+Los números pseudoaleatorios son secuencias generadas por algoritmos deterministas que, pese a su origen, reproducen de manera controlada propiedades estadísticas de los números aleatorios. Una secuencia pseudoaleatoria, en particular, se caracteriza por ser impredecible sin conocimiento previo y por superar pruebas estadísticas clásicas, aunque pueda derivarse de reglas simples \cite{Lehmer1951}. Su importancia radica en la amplia aplicabilidad que tienen en disciplinas como criptografía, simulación, métodos numéricos, biología, física, finanzas, inteligencia artificial y telecomunicaciones. Por ello, la generación de números pseudoaleatorios se ha convertido en un campo fundamental de estudio, con múltiples métodos propuestos a lo largo del tiempo, cada uno con ventajas y limitaciones.
+
+Los \textbf{generadores físicos} de números aleatorios, que utilizan fenómenos naturales como el decaimiento radioactivo, el ruido térmico en dispositivos electrónicos, la detección de rayos cósmicos o fenómenos mecánicos  \cite{Madiot2022,Stipcevic2014}, representan la forma más cercana a la verdadera aleatoriedad. Aunque estos métodos proporcionan secuencias altamente impredecibles, su procesamiento lento, sesgos inherentes y la incapacidad de reproducir las secuencias generadas limitan su uso en aplicaciones que requieren alta eficiencia y reproducibilidad.
+
+Con el avance de la computación en el siglo XX, los generadores de números pseudoaleatorios ganaron relevancia. Estos generadores, también conocidos como cuasi-aleatorios, son algoritmos deterministas que exhiben comportamientos caóticos, ofreciendo soluciones a las limitaciones de los generadores físicos y produciendo resultados estadísticamente indistinguibles de la verdadera aleatoriedad.
+
+Uno de los métodos deterministas más antiguos\footnote{Tiene sus incios en 1951, siendo el GLC una versión  del generador propuesto por Lehmer \cite{Lehmer1951}.} y simples es el \textbf{generador congruencial lineal (GLC)} \cite{Lehmer1951,Knuth1997,BaltazarLarios2024}, definido por la fórmula recursiva:
+\[ X_{n+1} = (aX_n + c) \mod m \]
+donde $X_n$ es el $n$ -ésimo número pseudoaleatorio de la secuencia, \(a\) es el multiplicador, \(c\) es el incremento, \(m\) es el módulo y el valor inicial $X_0$ es la semilla. Aunque los GLC son rápidos y fáciles de implementar, pueden tener ciclos cortos y patrones repetitivos si los parámetros no se eligen cuidadosamente. Investigaciones recientes han abordado estas limitaciones proponiendo el uso de factores dinámicos \cite{Alhomdy2015}.
+
+Generadores más modernos, como el \textbf{Mersenne Twister}\footnote{Su nombre proviene del hecho de que la longitud del periodo corresponde a un número primo de Mersenne.}, desarrollado por Makoto Matsumoto y Takuji Nishimura en 1997 \cite{Matsumoto1998}, utilizan herramientas de la teoría de números para generar secuencias con un largo período 
+de \(2^{19937}-1\) y alta calidad estadística. Este generador es ampliamente utilizado debido a su eficiencia y robustez.
+
+En criptografía, los algoritmos de tipo hash, como el \textbf{SHA-1 (Secure Hash Algorithm 1)} \cite{Eastlake2001}, juegan un papel crucial en la seguridad de los datos, generando números pseudoaleatorios que son difíciles de predecir.
+
+En este trabajo, nos centraremos en el uso de \textbf{sistemas dinámicos discretos} para la generación de números pseudoaleatorios. Los sistemas dinámicos, especialmente los caóticos, han demostrado ser útiles en esta área debido a su comportamiento complejo y aparentemente aleatorio. Con los avances en el poder computacional y la teoría de sistemas dinámicos caóticos \cite{Behnia2011,Szczepanski2001}, la generación de números pseudoaleatorios a través de estos sistemas ha ganado relevancia.
+
+\end{document}

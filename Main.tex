@@ -1,0 +1,231 @@
+\documentclass[letterpaper,spanish,12pt]{book}
+
+\usepackage{subfigure} 
+\usepackage[top=1in, left=1.25in, right=1.25in, bottom=1in]{geometry} % Tamaño de papel y margen
+\usepackage{bachelorstitlepageUNAM} % Portada tesis UNAM
+\usepackage{titlesec}
+\usepackage{xcolor}
+
+% Definir color oliva
+\definecolor{olive}{rgb}{0.33, 0.42, 0.18}
+
+% Estilo de capítulos
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries} % fuente grande y negrita
+  {\color{dark}\fontsize{50}{60}\selectfont\thechapter} % número del capítulo, muy grande y en rojo
+  {1ex} % separación entre número y título
+  {\Huge} % estilo del título
+	
+\usepackage[titletoc]{appendix} % Añade palabra «Apéndice» en Índice y define el ambiente appendices
+\usepackage{tocbibind}
+\usepackage{cite} % Define varios tipos de entrada en archivos *.bib
+\usepackage[T1]{fontenc} % Elimina advertencia Package spanish Warning: Replacing `OT1/cmr/bx/sc'
+\usepackage[mathletters]{ucs} % Unicode char; escribir directo caracteres griegos en Mathmode.
+% Es muy útil para aquellos que necesitan escribir varios caracteres griegos y se quieren evitar escribir cada vez \alpha \beta \gamma etc. Particularmente si tienen mapeado el teclado griego que en general se acomoda fonéticamente a QWERTY i.e. a=α b=β p=π m=μ r=ρ D=∆ d=δ 
+\usepackage{textgreek} % para usar caracteres griegos en mmacells (Entrada de código de Mathematica)
+\usepackage[utf8x]{inputenc} % Escribir con tildes
+\usepackage[es-tabla,es-nodecimaldot]{babel} % es-nodecimaldot es para usar punto como separador decimal en lugar de coma
+
+\usepackage{amsmath}
+%\DeclareMathOperator{\sinc}{sinc}
+\usepackage{setspace}
+\usepackage{multirow}
+%\usepackage{nicefrac}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{media9}
+
+\usepackage{caption}
+\captionsetup{font=small} % Tamaño fuente 10pt en caption
+
+\usepackage[table]{xcolor} % 
+\definecolor{mathematicaSection}{RGB}{184,67,36}
+
+\usepackage{mmacells} % Mathematica Code Input
+% En genera para otros lenguajes de programación el paquete listings es ideal.
+\mmaSet{ % Revisar la documentación de mmaCells
+  moredefined={
+  UnitConvert, 
+  diode, cavity,
+  experimentalData,
+  rDB, nAir}
+}
+\mmaDefineMathReplacement{∆}{\textDelta}
+\mmaDefineMathReplacement{θ}{\texttheta}
+\mmaDefineMathReplacement{λ}{\textlambda}
+\mmaDefineMathReplacement{μ}{\textmugreek} 
+\mmaDefineMathReplacement{ν}{\textnu}
+\mmaDefineMathReplacement{σ}{\textsigma}
+\mmaDefineMathReplacement{->}{\(\to\)}
+%\mmaDefineMathReplacement{⟦}{[\(\!\!\)[}
+%\mmaDefineMathReplacement{⟧}{]\(\!\!\)]}
+
+\usepackage{booktabs} % Tablas de datos elegantes
+\AtBeginDocument{% Espacio entre líneas para booktabs (en general funciona sin esto, pero por el formato de la tesis debe declararse y no tuve tiempo de encontrar una mejor solución) 
+	\abovetopsep=5pt
+}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{ifthen} % \if \then \else
+\usepackage{datatool} % Importar y manejar tablas de datos e.g. *.csv
+
+\usepackage{bookmark}% Elimina advertencia Package rerunfilecheck Warning: File `output.out' has changed.
+
+\usepackage{physics,siunitx} % physics define cosas como \pdv para derivadas parciales, notación de Dirac y demás. siunitx tiene una descripción para "desesperados" en su documentación que es bastante útil.
+\sisetup{ % Config. global de Siunitx
+open-bracket = {},close-bracket = {}, % quita paréntesis de números 
+range-phrase = {\translate{ a }}, % Traduce "to" a español
+list-final-separator = {\translate{ y }}, % Traduce "and" a español
+list-pair-separator = {\translate{ y }}, % Traduce "and" a español
+%parse-numbers = false, % Poder usar formato S con datatool en tablas
+table-number-alignment = center-decimal-marker, % Alinea al centro el punto decimal en tablas
+per-mode = symbol
+}
+
+\usepackage{tikz-3dplot-circleofsphere} % Hace algunas definiciones útiles para hacer diagramas con esferas en Tikz
+\usetikzlibrary{babel}
+\tikzset{> = stealth}
+
+\usepackage{todonotes} % define \todo para agregar cosas por hacer en la tesis. también define \missingfigure que es útil cuando aún no se tiene la gráfica/figura/diagrama que se quiere añadir a la mano.
+
+\usepackage{hyperref} % Agrega hipervínculos al PDF. 
+% Por alguna razón a veces regresa advertencias, pero al compilar el documento una vez más desaparecen
+\usepackage{cleveref} % \cref >> \ref considera el tipo de ambiente usado.
+\crefname{table}{Tabla}{Tablas} % cambia el nombre de Cuadro a Tabla
+% En general hyperref siempre debe cargarse al final, pero la
+% documentación de cleveref pide que se cargue después de hyperref
+\usepackage{parskip}
+\usepackage{subfiles} % 
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{adjustbox} %Manejo de varios archivos, por ejemplo: capítulos escritos en documentos por separado.
+% Requiere que todos los paquetes que se necesitan se carguen en el documento principal.
+% Otro paquete que sirve el mismo propósito es standalone pero requiere mayor cuidado con la sintaxis.
+\setstretch{1.2}
+\newcommand{\duda}[1]{{\textcolor{red}{#1}}}
+%------------------------------------------
+% DEFINICION DE COMANDOS
+%------------------------------------------
+
+% Resaltado condicional para datos en tablas: equal, greater than, between
+\newcommand{\rceq}[3][]{\ifthenelse{\( \DTLiseq{#3}{#2} \) \OR \( \DTLiseq{#3}{#1} \)}{\textbf{#3}}{#3}}
+\newcommand{\rcgt}[2]{\DTLifgt{#1}{#2}{{\cellcolor[gray]{0.8}} #1}{#1}}
+\newcommand{\rcbt}[3]{\DTLifnumclosedbetween{#1}{#2}{#3}{{\cellcolor[gray]{0.8}} #1}{#1}}
+
+% Sección para código de Mathematica
+\newcommand{\mmaSec}[1]{\section*{\textcolor{mathematicaSection}{#1}}}
+% Doble paréntesis de Mathematica
+%\newcommand{\mmaPartL}[1]{	[\(\!\!\)[ }
+%\newcommand{\mmaPartR}[1]{	]\(\!\!\)] }
+
+
+\setlength {\marginparwidth }{2cm} 
+%\setlength{\textheight}{19.5 cm}
+%\setlength{\textwidth}{15.5 cm}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem{corollary}[theorem]{Corolario}
+\newtheorem{remark}{Observación}
+\newtheorem{example}{Ejemplo}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{hypotheses}[theorem]{Hypotheses}
+\theoremstyle{remark}
+
+
+%------------------------------------------
+% PORTADA
+%------------------------------------------
+\author{Eduardo Lince Gomez}
+\title{Técnicas de generación
+de números aleatorios mediante sistemas dinámicos discretos}
+\faculty{Facultad de Ciencias}
+\degree{Matemático Aplicado}
+\supervisor{Dr. Josué Manik Nava Sedeño}
+\cityandyear{Ciudad Universitaria, CDMX, 2025}
+\logouni{Escudo-UNAM} % nombre del archivo del escudo de la universidad
+\logofac{Escudo-FCIENCIAS} % nombre del archivo del escudo de la facultad
+
+
+\graphicspath{{diagramas/}{fotos/}{graficas/}}% Usar gráficos de esas carpetas sin necesidad de poner el directorio completo (salvo que tengan terminación *.tex) 
+
+\begin{document} % Inicia el documento
+\frontmatter
+\maketitle % Crea portada
+
+%------------------------------------------
+% DEDICATORIA
+%------------------------------------------
+\chapter*{}
+%\vspace{2cm}
+\begin{flushright}
+	{\fontfamily{ppl}%Palatino
+	\selectfont\emph{<<La vida es buena por sólo dos cosas, descubrir y enseñar las matemáticas.>>}\\
+\vspace{5mm}
+	Simeon Poisson}
+
+\end{flushright}
+\vfill
+%------------------------------------------
+% AGRADECIMIENTOS
+%------------------------------------------
+\chapter{Resumen}
+La tesis aborda la generación de números pseudoaleatorios mediante sistemas dinámicos sencillos, explorando específicamente el mapeo logístico, el mapeo tienda y el autómata celular unidimensional conocido como regla 30. La motivación para este estudio radica en la  capacidad de los sistemas dinámicos simples para exhibir comportamientos caóticos, lo cual es crucial para la generación de números pseudoaleatorios uniformes. Estos números son fundamentales para la generación de muestras de otras variables aleatorias, una tarea cada vez más relevante en múltiples áreas de la matemática aplicada.
+
+%El objetivo principal fue evaluar la calidad de los números pseudoaleatorios generados en términos de uniformidad e independencia. La implementación se llevó a cabo utilizando el lenguaje de programación Python. La calidad de los números generados se evaluó mediante análisis de histogramas, comparación de momentos y funciones de representación así como pruebas estadísticas.
+La implementación de los generadores se realizó en el lenguaje de programación Python. Posteriormente, la calidad de los números obtenidos se evaluó mediante análisis de histogramas, comparación de momentos, estudio de la función generadora de momentos y de la función característica, así como mediante pruebas estadísticas para examinar su uniformidad e independencia.
+
+
+
+Entre los hallazgos más destacados, se encontró que tanto el mapeo tienda como la regla 30 (considerando sus columnas) demostraron una eficiencia superior en comparación con el mapeo logístico. Un resultado significativo fue el impacto del reordenamiento de los datos en las pruebas de independencia, lo que subraya la importancia de la estructura de los datos generados.
+
+Las conclusiones generales indican que los sistemas dinámicos sencillos pueden ofrecer un buen desempeño en la generación de números pseudoaleatorios, combinando simplicidad y eficiencia. Estos resultados son especialmente relevantes para aplicaciones donde los recursos computacionales son limitados, haciendo de estos métodos una opción viable y efectiva.
+
+
+
+\tableofcontents % Index 
+\mainmatter 
+%------------------------------------------
+% CUERPO DE LA TESIS
+%------------------------------------------
+\chapter{Introducción}
+\subfile{capitulos/introduccion}
+
+\chapter{Marco teórico}
+\subfile{capitulos/marco_teorico}
+
+\chapter{Resultados}
+\subfile{capitulos/resultados}
+
+% \chapter{Aplicación a biología}
+% \subfile{capitulos/aplicacion}
+
+\chapter{Conclusiones}
+\subfile{capitulos/conclusiones}
+
+%------------------------------------------
+% APENDICES
+%------------------------------------------
+% \begin{appendices}
+% \appendix
+
+% \chapter{Ecuaciones y diagramas con Tikz}
+% \subfile{apendices/example_tikz}
+
+% \chapter{Ejemplo código Mathematica}
+% \subfile{apendices/mathematica_code}
+
+% \end{appendices}
+%------------------------------------------
+% BIBLIOGRAFIA
+%------------------------------------------
+\bibliographystyle{plain}
+
+% \bibliographystyle{ieeetr}
+% \addcontentsline{toc}{chapter}{Bibliografía}
+\bibliography{biblio.bib}
+
+\backmatter
+\end{document}

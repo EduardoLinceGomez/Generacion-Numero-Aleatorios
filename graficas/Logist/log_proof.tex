@@ -1,0 +1,40 @@
+\documentclass[tikz,convert]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{ffqqqq}{rgb}{1.,0.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=5.0cm,y=5.0cm]
+\clip(-0.15,-0.15) rectangle (1.2,1.2);
+\draw[line width=1.2pt,color=ffqqqq,smooth,samples=100,domain=-0:1] plot(\x,{4*(\x)*(1-(\x))});
+\draw [line width=0.8pt] (0.,1.05)-- (0.,-0.5);
+\draw [line width=0.8pt] (-0.5,0.)-- (1.05,0.);
+\draw [line width=0.8pt,dash pattern=on 3pt off 3pt] (-0.5397800574660786,0.5)-- (1.140134876820503,0.5);
+\draw [line width=0.8pt,dotted] (0.14644660940672624,0.5)-- (0.14644660940672624,0.);
+\draw [line width=0.8pt,dotted] (0.8535533905932737,0.5)-- (0.8535533905932737,0.);
+\draw (-0.09416503568107437,0.6510375006240736) node[anchor=north west] {$y$};
+\draw (-0.12595097181391152,1.2) node[anchor=north west] {$Y=\phi(X)$};
+\draw (0.10052382313255315,-5.741900990885697E-4) node[anchor=north west] {$X_1$};
+\draw (0.7998144180549703,-5.741900990885697E-4) node[anchor=north west] {$X_2$};
+\draw (0.45811560462697104,-0.01646715816550716) node[anchor=north west] {$\frac{1}{2}$};
+\draw (1.1,0.05) node[anchor=north west] {$X$};
+\draw (-0.1019179366446972,1.05) node[anchor=north west] {$1$};
+\draw (0.9547708567025515,0.0033990519175160776) node[anchor=north west] {$1$};
+\begin{scriptsize}
+\draw[color=ffqqqq] (-0.1617101499633533,-0.7535035522456693) node {$f$};
+\draw [color=black] (0.,0.5)-- ++(-2.0pt,0 pt) -- ++(4.0pt,0 pt) ++(-2.0pt,-2.0pt) -- ++(0 pt,4.0pt);
+\draw [fill=xdxdff] (-0.5397800574660786,0.5) circle (2.5pt);
+\draw[color=xdxdff] (-0.5113554474245618,0.573559281300283) node {$F$};
+\draw [fill=xdxdff] (1.940134876820503,0.5) circle (2.5pt);
+\draw[color=xdxdff] (1.9679475709367353,0.573559281300283) node {$G$};
+\draw [color=black] (0.14644660940672624,0.)-- ++(-2.0pt,0 pt) -- ++(4.0pt,0 pt) ++(-2.0pt,-2.0pt) -- ++(0 pt,4.0pt);
+\draw [color=black] (0.8535533905932737,0.)-- ++(-2.0pt,0 pt) -- ++(4.0pt,0 pt) ++(-2.0pt,-2.0pt) -- ++(0 pt,4.0pt);
+\draw [color=black] (0.5,0.)-- ++(-2.0pt,0 pt) -- ++(4.0pt,0 pt) ++(-2.0pt,-2.0pt) -- ++(0 pt,4.0pt);
+\draw [color=black] (1.,0.)-- ++(-2.0pt,0 pt) -- ++(4.0pt,0 pt) ++(-2.0pt,-2.0pt) -- ++(0 pt,4.0pt);
+\draw [color=black] (0.,1.)-- ++(-2.0pt,0 pt) -- ++(4.0pt,0 pt) ++(-2.0pt,-2.0pt) -- ++(0 pt,4.0pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{document}

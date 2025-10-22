@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        symbolic x coords={2-4, 4-6, 6-8, 8-10},
+        xtick=data,
+        ymin=0,
+        ymax=5,
+        xlabel={Intervalos},
+        ylabel={Frecuencia}
+    ]
+    \addplot coordinates {(2-4,2) (4-6,1) (6-8,3) (8-10,4)};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}
