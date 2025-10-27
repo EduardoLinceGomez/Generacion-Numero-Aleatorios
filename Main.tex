@@ -1,193 +1,229 @@
+% ================================================================
+% Tesis: Técnicas de generación de números aleatorios mediante sistemas dinámicos discretos
+% Autor: Eduardo Lince Gómez
+% Institución: Facultad de Ciencias, UNAM
+% Año: 2025
+% ================================================================
+
 \documentclass[letterpaper,spanish,12pt]{book}
 
-\usepackage{subfigure} 
-\usepackage[top=1in, left=1.25in, right=1.25in, bottom=1in]{geometry} % Tamaño de papel y margen
-\usepackage{bachelorstitlepageUNAM} % Portada tesis UNAM
-\usepackage{titlesec}
-\usepackage{xcolor}
+% ================================================================
+% PAQUETES BÁSICOS DE FORMATO Y CONFIGURACIÓN GENERAL
+% ================================================================
+\usepackage[top=1in, left=1.25in, right=1.25in, bottom=1in]{geometry} % Márgenes del documento
+\usepackage[utf8]{inputenc}   % Codificación UTF-8
+\usepackage[T1]{fontenc}      % Soporte de caracteres acentuados
+\usepackage[es-tabla,es-nodecimaldot]{babel} % Configuración en español
+\usepackage{setspace}         % Control del interlineado
+\setstretch{1.2}              % Interlineado 1.2
+\setlength{\parindent}{2em}   % Sangría en párrafos
+\setlength{\parskip}{4pt}     % Espacio entre párrafos
+\usepackage{subfiles}
 
-% ------------------------------------
+
+% ================================================================
+% PAQUETES DE PORTADA Y TÍTULOS
+% ================================================================
+\usepackage{bachelorstitlepageUNAM} % Formato de portada UNAM
+\usepackage{titlesec}                % Personalización de títulos
+\usepackage{xcolor}                  % Colores personalizados
+\usepackage{tikz}                    % Dibujos vectoriales
+
+% ================================================================
+% DISEÑO DE LETRA CAPITULAR PARA INICIO DE CAPÍTULOS
+% ================================================================
 \usepackage{lettrine}
+\renewcommand{\LettrineFontHook}{\bfseries\Huge} % Letra capitular en negrita y grande
+\renewcommand{\LettrineTextFont}{\normalfont}    % Texto adyacente normal
 
-% Comando para iniciales capitulares uniformes en capítulos
 \newcommand{\chapteropening}[3][]{%
-\lettrine[lines=2,lhang=0.25,nindent=8pt,#1]{#2}{\MakeLowercase{#3}}%
+  \lettrine[lines=1, lhang=0.25, nindent=8pt, lraise=0., #1]{#2}{\MakeLowercase{#3}}%
 }
 
-% \newcommand{\chapteropening}[3][]{%
-%   {%
-%     \renewcommand{\LettrineFontHook}{\bfseries\LARGE}% letra capitular
-%     \renewcommand{\LettrineTextFont}{\normalfont}% texto junto a la capitular SIN small caps
-%     \lettrine[lines=2,
-%             lhang=0.0, 
-%             lraise=0.7,
-%             findent=\parindent,
-%             nindent=8pt,
-%             #1]{#2}{#3}%
-%   }%
-% }
-% ------------------------------------
-
-% Definir color oliva
+% ================================================================
+% ESTILO DE CAPÍTULOS CON COLOR Y CAJA NUMERADA
+% ================================================================
 \definecolor{olive}{rgb}{0.33, 0.42, 0.18}
 \definecolor{chapterblue}{RGB}{16,58,116}
 
 \newcommand{\ChapterLabel}[1]{%
   \begin{tikzpicture}[baseline={(num.base)}]
-    \node[inner sep=0pt,minimum width=1.4cm,minimum height=1.7cm,fill=olive] (num) {\color{white}\bfseries\fontsize{38}{42}\selectfont #1};
-    \node[anchor=east,rotate=90,inner sep=4pt,minimum width=1.6cm,minimum height=0.7cm,fill=olive] at ([xshift=-0.5cm,yshift=1.2cm]num.west) {\color{white}\bfseries\footnotesize\MakeUppercase{Capítulo}};
+    % Caja principal con número de capítulo
+    \node[inner sep=0pt,minimum width=1.4cm,minimum height=1.7cm,fill=olive] (num)
+      {\color{white}\bfseries\fontsize{38}{42}\selectfont #1};
+    % Texto rotado "Capítulo"
+    \node[anchor=east,rotate=90,inner sep=4pt,minimum width=1.6cm,minimum height=0.7cm,fill=olive]
+      at ([xshift=-0.5cm,yshift=1.2cm]num.west)
+      {\color{white}\bfseries\footnotesize\MakeUppercase{Capítulo}};
   \end{tikzpicture}%
 }
 
+% Formato de capítulos numerados y sin número
 \titleformat{\chapter}[hang]
   {\normalfont\Huge\bfseries\color{olive}}
   {\ChapterLabel{\thechapter}}
   {1em}
-  {##1}
+  {#}
 
 \titleformat{name=\chapter,numberless}[hang]
   {\normalfont\Huge\bfseries\color{olive}}
   {}
   {0pt}
-  {##1}
+  {#}
 
 \titlespacing*{\chapter}{0pt}{-1.5ex}{3.5ex}
 \titlespacing*{name=\chapter,numberless}{0pt}{-1.5ex}{3.5ex}
-%------------------------
-% % Estilo de capítulos
-% \titleformat{\chapter}[display]
-%   {\normalfont\huge\bfseries} % fuente grande y negrita
-%   {\color{dark}\fontsize{50}{60}\selectfont\thechapter} % número del capítulo, muy grande y en rojo
-%   {1ex} % separación entre número y título
-%   {\Huge} % estilo del título
 
-%-------------------
-%   {\normalfont}
-%   {\ChapterLabel{\thechapter}}
-%   {1.5em}
-%   {\Huge\bfseries}
+% ================================================================
+% PAQUETES MATEMÁTICOS Y UTILIDADES
+% ================================================================
+\usepackage{amsmath,amssymb,amsthm}
+%\usepackage{physics,siunitx}  % Derivadas, unidades y notación física
+\usepackage{booktabs}         % Tablas profesionales
+\usepackage{multirow}         % Filas múltiples en tablas
+\usepackage{graphicx}         % Inclusión de imágenes
+\usepackage{subfigure}        % Subfiguras 
+\usepackage{animate,media9}   % Animaciones y multimedia
+\usepackage{hyperref}         % Enlaces y referencias internas
+\usepackage{cleveref}         % Referencias inteligentes
+\usepackage{todonotes}        % Comentarios tipo "TODO"
+\usepackage{datatool}         % Manejo de tablas CSV
+\usepackage[most]{tcolorbox}  % Recuadros personalizables
+\tcbuselibrary{theorems,skins,breakable}
 
-% \titlespacing*{\chapter}{0pt}{0pt}{3.5ex}
-%-------------------
-\usepackage[titletoc]{appendix} % Añade palabra «Apéndice» en Índice y define el ambiente appendices
-\usepackage{tocbibind}
-\usepackage{cite} % Define varios tipos de entrada en archivos *.bib
-\usepackage[T1]{fontenc} % Elimina advertencia Package spanish Warning: Replacing `OT1/cmr/bx/sc'
-\usepackage[mathletters]{ucs} % Unicode char; escribir directo caracteres griegos en Mathmode.
-% Es muy útil para aquellos que necesitan escribir varios caracteres griegos y se quieren evitar escribir cada vez \alpha \beta \gamma etc. Particularmente si tienen mapeado el teclado griego que en general se acomoda fonéticamente a QWERTY i.e. a=α b=β p=π m=μ r=ρ D=∆ d=δ 
-\usepackage{textgreek} % para usar caracteres griegos en mmacells (Entrada de código de Mathematica)
-\usepackage[utf8x]{inputenc} % Escribir con tildes
-\usepackage[es-tabla,es-nodecimaldot]{babel} % es-nodecimaldot es para usar punto como separador decimal en lugar de coma
+% % ================================================================
+% % CONFIGURACIÓN DE ENTORNOS MATEMÁTICOS Y DEFINICIONES
+% % ================================================================
 
-\usepackage{amsmath}
-%\DeclareMathOperator{\sinc}{sinc}
-\usepackage{setspace}
-\usepackage{multirow}
-%\usepackage{nicefrac}
-\usepackage{graphicx}
-\usepackage{animate}
-\usepackage{media9}
-
-\usepackage{caption}
-\captionsetup{font=small} % Tamaño fuente 10pt en caption
-
-\usepackage[table]{xcolor} % 
-% \definecolor{mathematicaSection}{RGB}{184,67,36}
-
-\usepackage{mmacells} % Mathematica Code Input
-% En genera para otros lenguajes de programación el paquete listings es ideal.
-\mmaSet{ % Revisar la documentación de mmaCells
-  moredefined={
-  UnitConvert, 
-  diode, cavity,
-  experimentalData,
-  rDB, nAir}
-}
-\mmaDefineMathReplacement{∆}{\textDelta}
-\mmaDefineMathReplacement{θ}{\texttheta}
-\mmaDefineMathReplacement{λ}{\textlambda}
-\mmaDefineMathReplacement{μ}{\textmugreek} 
-\mmaDefineMathReplacement{ν}{\textnu}
-\mmaDefineMathReplacement{σ}{\textsigma}
-\mmaDefineMathReplacement{->}{\(\to\)}
-%\mmaDefineMathReplacement{⟦}{[\(\!\!\)[}
-%\mmaDefineMathReplacement{⟧}{]\(\!\!\)]}
-
-\usepackage{booktabs} % Tablas de datos elegantes
-\AtBeginDocument{% Espacio entre líneas para booktabs (en general funciona sin esto, pero por el formato de la tesis debe declararse y no tuve tiempo de encontrar una mejor solución) 
-	\abovetopsep=5pt
-}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-
-\usepackage{ifthen} % \if \then \else
-\usepackage{datatool} % Importar y manejar tablas de datos e.g. *.csv
-
-\usepackage{bookmark}% Elimina advertencia Package rerunfilecheck Warning: File `output.out' has changed.
-
-\usepackage{physics,siunitx} % physics define cosas como \pdv para derivadas parciales, notación de Dirac y demás. siunitx tiene una descripción para "desesperados" en su documentación que es bastante útil.
-\sisetup{ % Config. global de Siunitx
-open-bracket = {},close-bracket = {}, % quita paréntesis de números 
-range-phrase = {\translate{ a }}, % Traduce "to" a español
-list-final-separator = {\translate{ y }}, % Traduce "and" a español
-list-pair-separator = {\translate{ y }}, % Traduce "and" a español
-%parse-numbers = false, % Poder usar formato S con datatool en tablas
-table-number-alignment = center-decimal-marker, % Alinea al centro el punto decimal en tablas
-per-mode = symbol
+% ---- Definición base de paddings / tipografía del título
+\tcbset{
+  mybase/.style={
+    enhanced, breakable, sharp corners,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    coltitle=black, fonttitle=\bfseries,
+    attach boxed title to top left={yshift=-2mm},
+  },
 }
 
-\usepackage{tikz-3dplot-circleofsphere} % Hace algunas definiciones útiles para hacer diagramas con esferas en Tikz
-\usetikzlibrary{babel}
-\tikzset{> = stealth}
+% ----  ESTILOS  -------------------------------------
 
-\usepackage{todonotes} % define \todo para agregar cosas por hacer en la tesis. también define \missingfigure que es útil cuando aún no se tiene la gráfica/figura/diagrama que se quiere añadir a la mano.
+% 1) Definición: gris claro + barra azul
+\tcbset{
+  styleDefinition/.style={
+    mybase,
+    colback=gray!8, colframe=gray!60!black, boxrule=0pt,
+    borderline west={2.5pt}{0pt}{blue!60!black},
+    boxed title style={colback=gray!15, colframe=gray!60!black},
+  },
+}
 
-\usepackage{hyperref} % Agrega hipervínculos al PDF. 
-% Por alguna razón a veces regresa advertencias, pero al compilar el documento una vez más desaparecen
-\usepackage{cleveref} % \cref >> \ref considera el tipo de ambiente usado.
-\crefname{table}{Tabla}{Tablas} % cambia el nombre de Cuadro a Tabla
-% En general hyperref siempre debe cargarse al final, pero la
-% documentación de cleveref pide que se cargue después de hyperref
-\usepackage{parskip}
-\usepackage{subfiles} % 
-\usepackage{graphicx}
-\usepackage{subfigure}
-\usepackage{adjustbox} %Manejo de varios archivos, por ejemplo: capítulos escritos en documentos por separado.
-% Requiere que todos los paquetes que se necesitan se carguen en el documento principal.
-% Otro paquete que sirve el mismo propósito es standalone pero requiere mayor cuidado con la sintaxis.
-\setstretch{1.2}
-\newcommand{\duda}[1]{{\textcolor{red}{#1}}}
-%------------------------------------------
-% DEFINICION DE COMANDOS
-%------------------------------------------
+% 2) Teorema: índigo con título invertido
+\tcbset{
+  styleTheorem/.style={
+    mybase,
+    colback=violet!3, colframe=violet!50!black, boxrule=0.5pt,
+    boxed title style={colback=white!60!black, coltitle=white, colframe=violet!50!black},
+  },
+}
 
-% Resaltado condicional para datos en tablas: equal, greater than, between
-\newcommand{\rceq}[3][]{\ifthenelse{\( \DTLiseq{#3}{#2} \) \OR \( \DTLiseq{#3}{#1} \)}{\textbf{#3}}{#3}}
-\newcommand{\rcgt}[2]{\DTLifgt{#1}{#2}{{\cellcolor[gray]{0.8}} #1}{#1}}
-\newcommand{\rcbt}[3]{\DTLifnumclosedbetween{#1}{#2}{#3}{{\cellcolor[gray]{0.8}} #1}{#1}}
+% 3) Lema: turquesa con marco punteado
+\tcbset{
+  styleLemma/.style={
+    mybase,
+    colback=teal!6, colframe=teal!60!black,
+    boxrule=0.5pt, dash pattern=on 3pt off 2pt,
+    boxed title style={colback=teal!25, colframe=teal!60!black},
+  },
+}
 
-% Sección para código de Mathematica
-\newcommand{\mmaSec}[1]{\section*{\textcolor{mathematicaSection}{#1}}}
-% Doble paréntesis de Mathematica
-%\newcommand{\mmaPartL}[1]{	[\(\!\!\)[ }
-%\newcommand{\mmaPartR}[1]{	]\(\!\!\)] }
+% 4) Proposición: ámbar con borde sólido y sombra leve
+\tcbset{
+  styleProposition/.style={
+    mybase,
+    colback=orange!6, colframe=orange!60!black, boxrule=0.6pt,
+    drop shadow,
+    boxed title style={colback=orange!20, colframe=orange!60!black},
+  },
+}
 
+% 5) Corolario: púrpura + barra doble a la izquierda
+\tcbset{
+  styleCorollary/.style={
+    mybase,
+    colback=violet!6, colframe=white!60!black, boxrule=0pt,
+    borderline west={2pt}{0pt}{violet!70!black},
+    borderline west={6pt}{2.5pt}{violet!30},
+    boxed title style={colback=violet!20, colframe=white!60!black},
+  },
+}
 
-\setlength {\marginparwidth }{2cm} 
-%\setlength{\textheight}{19.5 cm}
-%\setlength{\textwidth}{15.5 cm}
-\newtheorem{theorem}{Teorema}[section]
-\newtheorem{lemma}[theorem]{Lema}
-\newtheorem{proposition}[theorem]{Proposición}
-\newtheorem{corollary}[theorem]{Corolario}
-\newtheorem{remark}{Observación}
-\newtheorem{example}{Ejemplo}
-\newtheorem{definition}[theorem]{Definición}
-\newtheorem{hypotheses}[theorem]{Hypotheses}
-\theoremstyle{remark}
+% 6) Ejemplo: verde suave tipo “nota”
+\tcbset{
+  styleExample/.style={
+    mybase,
+    colback=green!7, colframe=green!50!black, boxrule=0.5pt,
+    borderline west={2pt}{0pt}{green!60!black},
+    boxed title style={colback=green!20, colframe=green!50!black},
+  },
+}
 
+% 7) Observación: amarillo pálido con ícono en el título (opcional)
+\tcbset{
+  styleRemark/.style={
+    mybase,
+    colback=yellow!10, colframe=yellow!50!black, boxrule=0.5pt,
+    borderline west={2pt}{0pt}{yellow!50!black},
+    boxed title style={colback=yellow!20, colframe=yellow!50!black},
+  },
+}
 
+% Proof (demostración): fondo gris muy claro y símbolo de QED
+\tcbset{
+  styleProof/.style={
+    mybase,
+    colback=gray!5, colframe=black!50,
+    borderline west={2pt}{0pt}{black!60},
+    boxed title style={colback=gray!20, colframe=black!60},
+    before upper={\parindent15pt},
+    after upper={\hfill$\square$}, % símbolo de fin de prueba
+  },
+}
+
+% ---- DEFINICIÓN DE ENTORNOS (numeración por sección) ----------
+
+\newtcbtheorem[number within=section]{definition}{Definición}{styleDefinition}{def}
+\newtcbtheorem[use counter from=definition]{theorem}{Teorema}{styleTheorem}{thm}
+\newtcbtheorem[use counter from=definition]{lemma}{Lema}{styleLemma}{lem}
+\newtcbtheorem[use counter from=definition]{proposition}{Proposición}{styleProposition}{prop}
+\newtcbtheorem[use counter from=definition]{corollary}{Corolario}{styleCorollary}{cor}
+\newtcbtheorem[use counter from=definition]{example}{Ejemplo}{styleExample}{ex}
+\newtcbtheorem[use counter from=definition]{remark}{Observación}{styleRemark}{rem}
+\newtcbtheorem[use counter from=definition]{demostracion}{Demostración}{styleProof}{pf}
+
+% Nombres para cleveref
+\crefname{definition}{definición}{definiciones}
+\Crefname{definition}{Definición}{Definiciones}
+
+\crefname{theorem}{teorema}{teoremas}
+\Crefname{theorem}{Teorema}{Teoremas}
+
+\crefname{lemma}{lema}{lemas}
+\Crefname{lemma}{Lema}{Lemas}
+
+\crefname{proposition}{proposición}{proposiciones}
+\Crefname{proposition}{Proposición}{Proposiciones}
+
+\crefname{corollary}{corolario}{corolarios}
+\Crefname{corollary}{Corolario}{Corolarios}
+
+\crefname{example}{ejemplo}{ejemplos}
+\Crefname{example}{Ejemplo}{Ejemplos}
+
+\crefname{remark}{observación}{observaciones}
+\Crefname{remark}{Observación}{Observaciones}
+
+\crefname{demostracion}{demostración}{demostraciones}
+\Crefname{demostracion}{Demostración}{Demostraciones}
 %------------------------------------------
 % PORTADA
 %------------------------------------------
@@ -201,6 +237,9 @@ de números aleatorios mediante sistemas dinámicos discretos}
 \logouni{Escudo-UNAM} % nombre del archivo del escudo de la universidad
 \logofac{Escudo-FCIENCIAS} % nombre del archivo del escudo de la facultad
 
+% ================================================================
+% INICIO DEL DOCUMENTO
+% ================================================================
 
 \graphicspath{{diagramas/}{fotos/}{graficas/}}% Usar gráficos de esas carpetas sin necesidad de poner el directorio completo (salvo que tengan terminación *.tex) 
 
@@ -222,10 +261,10 @@ de números aleatorios mediante sistemas dinámicos discretos}
 \end{flushright}
 \vfill
 %------------------------------------------
-% AGRADECIMIENTOS
+% RESUMEN
 %------------------------------------------
 \chapter{Resumen}
-\chapteropening{L}{}\MakeLowercase{a} tesis aborda la generación de números pseudoaleatorios mediante sistemas dinámicos sencillos, explorando específicamente el mapeo logístico, el mapeo tienda y el autómata celular unidimensional conocido como regla 30. La motivación para este estudio radica en la  capacidad de los sistemas dinámicos simples para exhibir comportamientos caóticos, lo cual es crucial para la generación de números pseudoaleatorios uniformes. Estos números son fundamentales para la generación de muestras de otras variables aleatorias, una tarea cada vez más relevante en múltiples áreas de la matemática aplicada.
+\chapteropening{L}{a} tesis aborda la generación de números pseudoaleatorios mediante sistemas dinámicos sencillos, explorando específicamente el mapeo logístico, el mapeo tienda y el autómata celular unidimensional conocido como regla 30. La motivación para este estudio radica en la  capacidad de los sistemas dinámicos simples para exhibir comportamientos caóticos, lo cual es crucial para la generación de números pseudoaleatorios uniformes. Estos números son fundamentales para la generación de muestras de otras variables aleatorias, una tarea cada vez más relevante en múltiples áreas de la matemática aplicada.
 
 %El objetivo principal fue evaluar la calidad de los números pseudoaleatorios generados en términos de uniformidad e independencia. La implementación se llevó a cabo utilizando el lenguaje de programación Python. La calidad de los números generados se evaluó mediante análisis de histogramas, comparación de momentos y funciones de representación así como pruebas estadísticas.
 La implementación de los generadores se realizó en el lenguaje de programación Python. Posteriormente, la calidad de los números obtenidos se evaluó mediante análisis de histogramas, comparación de momentos, estudio de la función generadora de momentos y de la función característica, así como mediante pruebas estadísticas para examinar su uniformidad e independencia.

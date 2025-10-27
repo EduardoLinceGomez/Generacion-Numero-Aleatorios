@@ -19,18 +19,23 @@ Un \textbf{sistema dinámico} se refiere a un sistema que cambia de manera deter
 \end{definition}
 
 \begin{definition}
+\label{}
     Un \textbf{sistema dinámico discreto} es un sistema dinámico con $T$ un conjunto discreto. 
 \end{definition}
 \begin{remark}
-    En un sistema dinámico discreto, el espacio de estados $E$ puede ser un conjunto discreto o continuo.
+\label{}
+En un sistema dinámico discreto, el espacio de estados $E$ puede ser un conjunto discreto o continuo.
 \end{remark}
 \begin{definition}
+\label{}
     En un sistema dinámico discreto. La \textbf{órbita} de $x$ bajo $\phi$, que denotamos como $O(x,\phi)$, es la sucesión \[\{\phi(n,x)\}_{n\in\mathbb{N}}=\{x,\phi(1,x),\phi(2,x),\phi(3,x),\dots,\phi(n,x),\dots\}\]
 en la literatura también se puede encontrar la notación equivalente
     \[\{\phi^n(x)\}_{n\in\mathbb{N}}=\{x,\phi(x),\phi^2(x),\phi^3(x),\dots,\phi^n(x),\dots\}\]
     donde se simplifica la función $\phi : E\rightarrow E$ y $\phi^n$ representa la composición de $\phi$ consigo misma $n$ veces: $\phi^2=\phi\circ \phi, \phi^3=\phi\circ \phi\circ \phi$ y así sucesivamente, mientras que a $\phi^0$ la definimos como la función identidad en $E$. En la \Cref{Sdd} tenemos un ejemplo de un sistema dinámico discreto sencillo. 
+    
+    \textbf{Nota:} Por simplicidad, en este trabajo usaremos la notación de composición.
 \end{definition}
-\textbf{Nota:} Por simplicidad, en este trabajo usaremos la notación de composición.
+
 
 La órbita de un elemento $x$ en el espacio de estados $E$ se puede interpretar como la evolución del sistema dinámico con condición inicial $x$.
 
@@ -49,6 +54,7 @@ La órbita de un elemento $x$ en el espacio de estados $E$ se puede interpretar 
 % \end{figure} 
 
 \begin{definition}
+\label{}
     Decimos que $x^*\in E$ es un \textbf{punto fijo} de $\phi$ si $x^*=\phi(x^*)$.
 \end{definition}
 \textbf{Nota:} A partir de ahora, el conjunto $E$ será un subconjunto de los números reales $\mathbb{R}$ a menos que se indique lo contrario.
@@ -67,9 +73,11 @@ La órbita de un elemento $x$ en el espacio de estados $E$ se puede interpretar 
 \label{fig:p_fijos}
 \end{figure}
 \begin{definition}
+\label{}
     Decimos que $x$ es un \textbf{punto de periodo n} de $\phi$ si $\phi^n(x)=x$ y para todo $m<n$ se tiene que $\phi^m(x)\neq x$.
 \end{definition}
 \begin{definition}
+\label{}
     Decimos que $x$ es un \textbf{punto periódico} de $\phi$ si existe $n \in \mathbb{N}$ tal que $x$ es un punto de período $n$.
 \end{definition}
 
@@ -83,6 +91,7 @@ La órbita de un elemento $x$ en el espacio de estados $E$ se puede interpretar 
 Los sistemas dinámicos, como los que se encuentran en biología, física y economía, suelen depender de uno o más parámetros. A medida que se varían estos parámetros, el sistema puede experimentar transiciones drásticas en su comportamiento. Estas transiciones, conocidas como bifurcaciones, son cruciales para comprender cómo los sistemas pasan de un estado estable a otro, cómo se originan patrones complejos y cómo surgen comportamientos caóticos.
 
 \begin{definition}
+\label{}
     Decimos que ocurre una \textbf{bifurcación} cuando ocurre un cambio cualitativo en las orbitas del sistema. 
 \end{definition}
 
@@ -95,6 +104,7 @@ donde \( r \) es un parámetro de control. A medida que \( r \) se incrementa (o
 \subsection{Caos}
     En el lenguaje natural la palabra \textit{``caos''} está asociada a desorden. Matemáticamente, un sistema caótico parece errático aun siendo determinista, pero al mismo tiempo, cumple con requisitos específicos. El primer requisito de la definición matemática contemporánea de caos recae en la idea de que una función sea sensible a las condiciones iniciales.
 \begin{definition} 
+\label{}
     Decimos que una función $\phi$ es \textbf{sensible a condiciones inciales} en $E$ si para todo $x\in E$, existe $\epsilon >0$ tal que para todo $\delta >0$ existen $y\in E$ y $n\in \mathbb{N}$ tales que \[|x-y|<\delta \text{ y }|\phi^n(x)-\phi^n(y)|>\epsilon.\]
 \end{definition}
 
@@ -103,19 +113,22 @@ donde \( r \) es un parámetro de control. A medida que \( r \) se incrementa (o
 
  En el último cuarto del siglo se fue refinando más la definición de caos con el uso de herramientas topológicas. Así, las siguientes definiciones proveen una idea más amplia de caos matemático.  
  \begin{definition}
+ \label{}
      Decimos que un subconjunto $D$ de $E$ es \textbf{denso en $E$} si para todo subconjunto abierto $A\subset E$ se tiene que $D\cap A\neq \emptyset$
  \end{definition}
 \begin{definition}
+\label{}
     Decimos que una función $\phi$ es \textbf{topológicamente transitiva} si para cualesquiera dos subconjuntos abiertos $A_1,A_2\subset E$, existe $x\in A_1$ y $n\in \mathbb{N}$ tales que $\phi^n(x)\in A_2$.
 \end{definition}
 \begin{remark}
+\label{}
 Intuitivamente, si una función de evolución es topológicamente transitiva sobre un conjunto $E$, entonces el sistema ``recorre'' todo el conjunto $E$.
     \end{remark}
     \begin{remark}
-    Si existe una órbita densa de $\phi$ en $E$, entonces $\phi$ es topológicamente transitiva\footnote{Esto no se cumple en un espacio topológico general, pero basta pedir que para todo subconjunto abierto no vacio $A\in E$ no exista un subconjunto finito y denso en $A$. Esta propiedad sí se satisface para $E\subset \mathbb{R}$, para más detalles véase \cite{Degirmenci2003}. Para las condiciones del converso, puede consultarse \cite{KingMendez2014}.}. 
+    \label{}
+    Si existe una órbita densa de $\phi$ en $E$, entonces $\phi$ es topológicamente transitiva \footnote{Esto no se cumple en un espacio topológico general, pero basta pedir que para todo subconjunto abierto no vacio $A\in E$ no exista un subconjunto finito y denso en $A$. Esta propiedad sí se satisface para $E\subset \mathbb{R}$, para más detalles véase \cite{Degirmenci2003}. Para las condiciones del converso, puede consultarse \cite{KingMendez2014}.}. 
 \end{remark}
-\begin{definition}
-\label{def:caos}
+\begin{definition}\label{def:caos}
     Decimos que una función $\phi:E\rightarrow E$ es una \textbf{función caótica}\cite{devaney2021} si cumple las siguientes condiciones:
     \begin{enumerate}
             \item La función $\phi$ es topológicamente transitiva.
@@ -127,13 +140,15 @@ Intuitivamente, si una función de evolución es topológicamente transitiva sob
 La relación que existe entre algunas definiciones contemporáneas de caos, incluyendo las que aquí definimos, es abordada para el caso donde $E$ es un espacio métrico compacto en \cite{Aulbach2001}.
 
 
-La definición \ref{def:caos} es muy general y puede ser reducida a solamente las primeras dos condiciones. 
+La definición \cref{def:caos} es muy general y puede ser reducida a solamente las primeras dos condiciones. 
 \begin{theorem}
+\label{}
     Si $\phi:E\rightarrow E$ es una función topológicamente transitiva y sus puntos periódicos son densos en $E$, entonces $\phi$ es sensible a las condiciones iniciales.
 \end{theorem}
 Una prueba del Teorema puede ser consultada en \cite{Banks1992}.
 Cuando nos restringimos a un espacio de estados como un subconjunto de los números reales, entonces se cumple el siguiente resultado: 
  \begin{theorem}
+ \label{}
     Para todo intervalo $I\subset \mathbb{R}$ se cumple que si $\phi:I\rightarrow I$ es topológicamente transitiva, entonces sus puntos periódicos son densos en $I$.
 \end{theorem}
 La prueba de este Teorema puede ser consultada en \cite{Vellekoop1994}.
@@ -224,6 +239,7 @@ Otra forma de ver la función de evolución $\phi$ en la \Cref{tab:map} es un di
 \end{figure}
 En cada uno de los ocho casos, la evolución del sistema (si hay o no auto en el cuadrado correspondiente en el siguiente tiempo) depende de la vecindad al tiempo anterior.
 \begin{remark}
+\label{}
     Para cada una de las 8 posibles vecindades de un estado sólo hay dos opciones(0 ó 1), entonces existen $2^8=256$ funciones distintas $$\phi:\{0,1\}\times\{0,1\}\times\{0,1\}\rightarrow \{0,1\}.$$
      Estas distintas funciones se pueden identificar con la secuencia de unos y ceros que hay en el siguiente renglón de la tabla de evolución, para hacerlo, la secuencia completa se cambia de base dos a base 10 (decimal). En la \Cref{tab:map}, a la función de evolución $\phi$ le corresponde $10111000_2$, que en base 10 es $184$. 
 \end{remark}
@@ -285,23 +301,28 @@ Como se observa en la \Cref{fig:R30-comp}, los patrones caóticos generados por 
 La probabilidad surge como una herramienta fundamental para describir y analizar fenómenos inciertos. Desde juegos de azar hasta modelos complejos en física, biología, economía e informática, la teoría de la probabilidad proporciona un marco matemático que permite cuantificar la incertidumbre y predecir el comportamiento de sistemas aleatorios. En esta sección se presentan los conceptos básicos que servirán como punto de partida para el estudio de números pseudoaleatorios.
 
 \begin{definition}
+\label{}
 El conjunto de posibles resultados de un experimento cuyo resultado es aleatorio se llama \textbf{espacio muestral} y es denotado comúnmente como $\Omega$. 
 \end{definition}
 Cada elemento $\omega \in \Omega$ representa un resultado elemental del experimento. 
 \begin{example}
+\label{}
     Si se lanza una moneda, el espacio muestral es $\Omega = \{\text{águila}, \text{sol}\}$.
     \label{ej:moneda}
 \end{example}
 \begin{definition}
+\label{}
 Un \textbf{evento} es cualquier subconjunto medible del espacio muestral.
 \end{definition}
 En el \Cref{ej:moneda}, el evento \textbf{obtener águila} es $A = \{\text{águila}\}\subset \Omega$. 
 \begin{example}
+\label{}
     Si se lanza un dado justo, el espacio muestral es  $\Omega =\{1,2,3,4,5,6\}$ y podemos tener eventos como: \textbf{obtener un número par}, el cual sería el conjunto $$B=\{2,4,6\}\subset \Omega.$$
 \end{example}
 Los eventos se agrupan en una colección de subconjuntos $\mathcal{F}\subset \mathcal{P}(\Omega)=2^{\Omega}$ del espacio muestral. 
 
 \begin{remark}
+\label{}
     El complemento \(B^{c}=\{1,3,5\}\) sigue siendo un evento, al igual que su unión con otros subconjuntos o su intersección con ellos.  
 \end{remark}
 De aquí surge la necesidad de trabajar con una colección de eventos \(\mathcal{F}\) que sea \emph{estable} ante dichas operaciones, lo que nos conduce al siguiente concepto fundamental.
@@ -309,6 +330,7 @@ De aquí surge la necesidad de trabajar con una colección de eventos \(\mathcal
 Si $\mathcal{F}$ cumple que es cerrado bajo operaciones de unión, intersección y complementos, entonces es llamada $\sigma$-álgebra. Esto quiere decir que estas operaciones entre eventos siguen dando como resultado otros eventos. Lo anterior queda formalizado con la siguiente definición:
 
 \begin{definition}
+\label{}
     Sea \(\Omega\) un conjunto no vacío. Decimos que una colección \(\mathcal{F}\subset 2^{\Omega}\) es una \textbf{\(\sigma\)-álgebra} sobre \(\Omega\) si cumple las tres condiciones siguientes:  
 
 1. \(\Omega\in\mathcal{F}\);  
@@ -344,8 +366,9 @@ Cuando \(\Omega\) es finito, por ejemplo: \(\{1,\dots,6\}\) en el experimento de
 Con la noción de \(\sigma\)-álgebra establecida, podemos introducir la \textit{medida de probabilidad} \(\mathbb{P}:\mathcal{F}\to[0,1]\) y enunciar las tres propiedades que debe satisfacer; estas se conocen como los \textit{axiomas de Kolmogórov} y constituyen la base del cálculo de probabilidades que emplearemos en los capítulos posteriores.
 
 \subsection*{Axiomas de la probabilidad}
-\begin{definition}
 
+\begin{definition}
+\label{}
 Sea \((\Omega,\mathcal F)\) un espacio medible, es decir, \(\mathcal F\) es una
 \(\sigma\)-álgebra de subconjuntos de \(\Omega\).
 Una aplicación
@@ -427,6 +450,7 @@ Las pruebas pueden consultarse en \cite{grimmett2001probability,Ross_07}.
 
 \subsection*{Espacio de probabilidad y variable aleatoria}
 \begin{definition}
+\label{}
 Un \textbf{espacio de probabilidad} es una terna
 \(
     (\Omega,\mathcal F,\mathbb{P}),
@@ -441,6 +465,7 @@ donde
 \end{definition}
 
 \begin{definition}
+\label{}
 Sea $(\Omega,\mathcal F,\mathbb{P})$ un espacio de probabilidad.
 Una función $X:\Omega \to \mathbb R$ es una \textbf{variable aleatoria} si, para todo $x\in\mathbb R$, se verifica
 \[
@@ -449,6 +474,7 @@ Una función $X:\Omega \to \mathbb R$ es una \textbf{variable aleatoria} si, par
 En tal caso decimos que $X$ es \emph{$\mathcal F$-medible}.
 \end{definition}
 \begin{remark}
+\label{}
 La definición anterior es equivalente a que para todo intervalo de la forma \((-\infty,x]\) se cumple
 \(
     X^{-1}\bigl((-\infty,x]\bigr)\in\mathcal F.
@@ -463,6 +489,7 @@ su \emph{función de densidad}, que desarrollamos a continuación.
 \subsection*{Función de distribución acumulada}
 
 \begin{definition}
+\label{}
 Sea $X$ una variable aleatoria sobre el espacio de probabilidad $(\Omega,\mathcal F,\mathbb{P})$.  
 La \textbf{función de distribución (acumulada)} de $X$ es la aplicación
 \[
@@ -474,12 +501,15 @@ Cuando sea necesario enfatizar el papel de la variable aleatoria,
 denotaremos a la función de distribución por \(F_X\).
 \end{definition}
 \begin{remark}
+\label{}
     El evento escrito de forma explícita como
 \(\{\omega\in\Omega : X(\omega)\le x\}\)
 suele abreviarse simplemente por \(\{X\le x\}\).
 \end{remark}
 
-\begin{lemma}Una función de distribución \(F_X\) tiene las siguientes propiedades:
+\begin{lemma}
+\label{lemma:dist}
+Una función de distribución \(F_X\) tiene las siguientes propiedades:
 \begin{enumerate}
     \item Es monótona no decreciente.
     \item \(\displaystyle \lim_{x\to-\infty}F_X(x)=0\) y
@@ -487,19 +517,20 @@ suele abreviarse simplemente por \(\{X\le x\}\).
     \item Es continua por la derecha con límite a la izquierda (càdlàg); los saltos corresponden a
           probabilidades asignadas a valores puntuales.
 \end{enumerate}
-\label{lemma:dist}
+
 \end{lemma}
 La prueba del \Cref{lemma:dist} puede consultarse en \cite{grimmett2001probability}.
 
 \subsection*{Variables aleatorias discretas y continuas}
 
 \begin{definition}
+\label{}
 Sea $X$ una variable aleatoria sobre el espacio de probabilidad
 $(\Omega,\mathcal F,P)$.
 Decimos que $X$ es \textbf{discreta} si toma valores únicamente en un
 subconjunto numerable $D=\{x_1,x_2,\dots\}\subset\mathbb R$.
 
-En tal caso existe la \textbf{función de masa de probabilidad}
+En tal caso, existe la \textbf{función de masa de probabilidad}
 \[
     p_X:D\subset\mathbb R\longrightarrow[0,1],
     \qquad
@@ -508,10 +539,11 @@ En tal caso existe la \textbf{función de masa de probabilidad}
 
 \end{definition}
 \begin{remark}
-    
+\label{}
 La función de distribución acumulada de $X$ tiene saltos en cada $x_k\in D$ y es constante entre ellos.  A estas distribuciones se les denomina \emph{atómicas}.
 \end{remark}
 \begin{example}
+\label{}
 \textbf{Uniforme discreta en \(\{1,2,\dots,n\}\).}\;
 Sea \(X\) una variable aleatoria que toma cada valor
 \(k\in\{1,\dots,n\}\) con la misma probabilidad.
@@ -533,6 +565,7 @@ La función de distribución acumulada viene dada por
 Obsérvese que \(F_X\) presenta saltos de tamaño \(1/n\) en cada entero.
 \end{example}
 \begin{example}
+\label{}
 \textbf{Geométrica \(\operatorname{Geom}(p)\).}\;
 Sea \(X\) el número de ensayos necesarios para obtener el primer éxito
 en una sucesión de ensayos independientes con probabilidad
@@ -557,6 +590,7 @@ con tamaños decrecientes geométricamente.
 
 
 \begin{definition}
+\label{}
 La variable aleatoria $X$ se llama \textbf{continua} si su función de
 distribución $F_X$ puede expresarse como
 \[
@@ -570,7 +604,9 @@ En este caso $F_X$ es continua y, cuando es derivable,
 cumple $f_X(x)=F'_X(x)$.
 \end{definition}
 
-\begin{lemma}Una función de densidad \(f_X\) tiene las siguientes propiedades:
+\begin{lemma}
+\label{lemma:dens}
+Una función de densidad \(f_X\) tiene las siguientes propiedades:
 \begin{enumerate}
     \item \(f_X(x)\ge 0\) para todo \(x\in\mathbb R\).
     \item \(\displaystyle \int_{-\infty}^{\infty} f_X(x)\,dx = 1\).
@@ -581,12 +617,12 @@ cumple $f_X(x)=F'_X(x)$.
     P\bigl(a<X\le b\bigr)=\int_{a}^{b} f_X(t)\,dt.
 \)
 \end{enumerate}
-\label{lemma:dens}
 \end{lemma}
 La prueba del \Cref{lemma:dens} puede consultarse en \cite{grimmett2001probability}.
 
 
 \begin{example}
+\label{}
  \textbf{Uniforme continua en \((0,1)\) \(U(0,1)\).}  
           Para \(X\sim U(0,1)\),
           \[
@@ -608,6 +644,7 @@ La prueba del \Cref{lemma:dens} puede consultarse en \cite{grimmett2001probabili
 \end{example}
 
 \begin{example}
+\label{}
 \textbf{Beta continua \(\operatorname{Beta}(\alpha,\beta)\).}\;
 Sea \(X\sim \operatorname{Beta}(\alpha,\beta)\) con parámetros
 \(\alpha,\beta>0\).
@@ -644,6 +681,7 @@ Un caso de interés para esta tesis es \(\operatorname{Beta}(0.5,0.5)\).
 \end{example}
 
 \begin{definition}
+\label{}
 Sea \(X:\Omega\to\mathbb R\) una variable aleatoria en el
 espacio de probabilidad \((\Omega,\mathcal F,\mathbb{P})\).
 Definimos el \textbf{soporte} de \(X\) como
@@ -657,6 +695,7 @@ Definimos el \textbf{soporte} de \(X\) como
 \]
 \end{definition}
 \begin{remark}
+\label{}
 De forma más intuitiva: El soporte son los valores que podemos “observar” al simular o medir la variable, mientras que todo lo que queda fuera ocurre con probabilidad nula, es decir, nunca los veremos en la práctica.
 % Fuera del soporte, la variable toma valor con probabilidad nula, de modo que esos valores nunca se observan
 %           en la práctica.
@@ -702,10 +741,11 @@ La densidad está dada por
    \]
 \end{itemize}
 
-En ambos escenarios los extremos se incluyen en el soporte por ser puntos de acumulación de probabilidad.
+En ambos escenarios, los extremos se incluyen en el soporte por ser puntos de acumulación de probabilidad.
 \end{remark}
 
 \begin{definition}
+\label{}
 Sea $F:\mathbb R\to[0,1]$ una función de distribución acumulada.
 Se define su \textbf{inversa generalizada} por
 \[
@@ -723,6 +763,7 @@ la inversa generalizada coincide con la inversa ordinaria \cite{BaltazarLarios20
 \end{remark}
 
 \begin{lemma}
+\label{}
 Sea $F$ la función de distribución de una variable aleatoria $X$ y
 $U\sim U(0,1)$ independiente de todo lo demás.
 Definamos
@@ -801,6 +842,7 @@ probabilidad de la unión de varios eventos (no necesariamente disjuntos) corrig
 \emph{sobrecuentos} producidos por las intersecciones.
 
 \begin{proposition}
+\label{}
 Sean $A_1,\dots,A_n\in\mathcal F$ eventos en un espacio de probabilidad
 $(\Omega,\mathcal F,P)$. Entonces
 \begin{equation}
@@ -1031,6 +1073,7 @@ Calculando la función de densidad de $Y$ obtenemos
 \[f_X(y)=\mathbf{1}_{[0,1]}(y).\] 
 Concluyendo que $Y$ tiene función de densidad $F_X$, es decir, $Y\sim X$.
 \begin{remark}
+\label{}
     No siempre se puede hacer esta técnica para generar distribuciones, pues la función inversa de la densidad no se puede escribir explícitamente para todas las variables aleatorias.
 \end{remark}
 Otro resultado muy parecido que también es relevante para este trabajo es el siguiente. 
@@ -1058,6 +1101,7 @@ La independencia es una de las propiedades fundamentales en probabilidad y juega
 En simulaciones, esta propiedad es esencial porque permite interpretar cada muestra como una réplica imparcial del experimento. Si las realizaciones no fueran independientes, aparecerían correlaciones que alterarían los resultados, produciendo estimaciones sesgadas y reduciendo la validez estadística de los métodos.  
 
 \begin{definition}
+\label{}
     Definimos a la \textbf{probabilidad condicional} de la variable $X$ dada la variable $Y$ como \[P(X|Y)=\frac{P(X\cap Y)}{P(Y)}\]
 \end{definition}
 \begin{definition}
@@ -1095,7 +1139,7 @@ Para visualizar todas estas características se ilustran los histogramas de una 
 \end{figure}
 
 
-En el histograma de la distribución normal(figura \ref{fig:hist_norm}), los datos se agrupan alrededor de la media (en este caso, cero), con una simetría evidente y una rápida disminución en las frecuencias conforme se alejan de la media. Las barras son más altas en el centro y descienden uniformemente hacia los lados. Esto se puede interpretar como:
+En el histograma de la distribución normal(Figura \ref{fig:hist_norm}), los datos se agrupan alrededor de la media (en este caso, cero), con una simetría evidente y una rápida disminución en las frecuencias conforme se alejan de la media. Las barras son más altas en el centro y descienden uniformemente hacia los lados. Esto se puede interpretar como:
 \begin{itemize}
     \item \textbf{Centro}: La mayor parte de los datos se encuentran cerca de la media, indicando que los valores centrales son los más frecuentes.
     \item \textbf{Simetría}: La simetría alrededor de la media sugiere una distribución equilibrada de los datos.
@@ -1103,7 +1147,7 @@ En el histograma de la distribución normal(figura \ref{fig:hist_norm}), los dat
 \end{itemize}
  La curva de la función de densidad normal superpuesta al histograma muestra cómo se espera que se distribuyan los datos en una distribución normal. La concordancia entre el histograma y la curva indica que los datos siguen aproximadamente una distribución normal.
 
-En el histograma de la distribución Cauchy(figra \ref{fig:hist_cauch}), se observa una concentración central similar, pero con una notable diferencia en las colas, que son mucho más gruesas en comparación con la distribución normal. Esto se puede interpretar como:
+En el histograma de la distribución Cauchy(Figura \ref{fig:hist_cauch}), se observa una concentración central similar, pero con una notable diferencia en las colas, que son mucho más gruesas en comparación con la distribución normal. Esto se puede interpretar como:
 \begin{itemize}
     \item \textbf{Centro}: Al igual que la normal, los datos se agrupan alrededor de un punto central (en este caso, cero).
        \item \textbf{Simetría}: La simetría alrededor de la media sugiere al igual que en la distribución Normal, una distribución balanceada de los datos.
@@ -1116,6 +1160,7 @@ En el histograma de la distribución Cauchy(figra \ref{fig:hist_cauch}), se obse
 \subsubsection{Momentos}
 Los momentos de una variable aleatoria son cantidades relevantes en la distribución de una variable aleatoria que describen sus características estadísticas. 
 \begin{definition}
+\label{}
     El \textbf{n-ésimo momento} de una \textbf{variable aleatoria discreta} \( X \) con función de masa de probabilidad \( p(x) \) está dado por:
 
 \[
@@ -1125,6 +1170,7 @@ Los momentos de una variable aleatoria son cantidades relevantes en la distribuc
 donde \( \mathbb{E}[X^n] \) representa la esperanza de \( X^n \).
 \end{definition}
 \begin{definition}
+\label{}
     El \textbf{n-ésimo momento} de una \textbf{variable aleatoria continua} \( X \) con función de densidad de probabilidad \( f(x) \) está dado por:
 
 \[
@@ -1184,6 +1230,7 @@ Comparar los momentos de los números generados numéricamente con sus contrapar
 % La FGM encapsula todos los momentos de una distribución y es útil para analizar la calidad de los números generados.
 La función generadora de momentos (FGM) de una variable aleatoria es una herramienta importante en teoría de probabilidad y estadística, utilizada para caracterizar la distribución de una variable aleatoria.
 \begin{definition}
+\label{}
     Si \( X \) es una variable aleatoria discreta con función de masa de probabilidad \( p(x) \), la \textbf{función generadora de momentos} \( M_X(t) \) está definida como:
 
 \[
@@ -1193,6 +1240,7 @@ M_X(t) = \mathbb{E}[e^{tX}] = \sum_{x\in Sop_X} e^{tx} p(x)
 donde la suma es sobre todos los valores posibles de \( X \).
 \end{definition}
 \begin{definition}
+\label{}
     Si \( X \) es una variable aleatoria continua con función de densidad de probabilidad \( f(x) \), la \textbf{función generadora de momentos} \( M_X(t) \) se define como:
 
 \[
@@ -1216,7 +1264,7 @@ M_X(t) = \mathbb{E}[e^{tX}] = \int_{-\infty}^{\infty} e^{tx} f(x) \, dx
 Estos resultados pueden ser consultados en \cite{GVK164761632,Ross_07,billingsley1995probability}.
 
 \begin{example}
-    
+\label{}
 \textbf{Distribución Normal}
 
 Para una variable aleatoria \( X \) con distribución normal \( \mathcal{N}(\mu, \sigma^2) \), la FGM está dada por:
@@ -1261,6 +1309,7 @@ La esperanza \(\mathbb{E}[e^{tX}]\) diverge, lo que significa que la FGM \( M_X(
 
 
 \begin{definition}
+\label{}
     Si \( X \) es una variable aleatoria discreta con función de masa de probabilidad \( p(x) \), la \textbf{función característica} \( \varphi_X(t) :\mathbb{C}\rightarrow\mathbb{R}\) está definida como:
 
 \[
@@ -1270,6 +1319,7 @@ La esperanza \(\mathbb{E}[e^{tX}]\) diverge, lo que significa que la FGM \( M_X(
 
 
 \begin{definition}
+\label{}
     Si \( X \) es una variable aleatoria continua con función de densidad de probabilidad \( f(x) \), la \textbf{función característica} \( \varphi_X(t) :\mathbb{C}\rightarrow\mathbb{R}\) se define como:
 
 \[
@@ -1278,6 +1328,7 @@ La esperanza \(\mathbb{E}[e^{tX}]\) diverge, lo que significa que la FGM \( M_X(
 
 \end{definition}
 \begin{lemma}
+\label{}
     Sea \( X \) una variable aleatoria. Entonces se cumplen las siguientes propiedades de su función característica \( \varphi_X(t) \):
 \begin{enumerate}
     \item[(a)] \( \left| \varphi_X(t) \right| \le \varphi_X(0) = 1 \);
@@ -1288,10 +1339,12 @@ La demostración puede consultarse en \cite{gut2013probability}.
 \label{lem:fc}
 \end{lemma}
 \begin{remark}
+\label{}
      A diferencia de la función generadora de momentos, la función característica existe para toda variable aleatoria \( X \), ya que la función \( t \mapsto e^{itX} \) tiene módulo uno y, por tanto, es integrable con respecto a cualquier medida de probabilidad. 
 \end{remark}
 El \Cref{lem:fc} nos permite tener el siguiente resultado, también consultable en \cite{gut2013probability}.
 \begin{theorem}
+\label{}
 Sean \( X \) y \( Y \) variables aleatorias. Si \( \varphi_X = \varphi_Y \), entonces \( X \overset{d}{=} Y \), y recíprocamente. 
 Más aún, si \( X \) es una variable aleatoria con función de distribución \( F \) y función característica \( \varphi \). Para \( a < b \),
 \[
@@ -1305,6 +1358,7 @@ F(b) - F(a) + \frac{1}{2} P(X = a) - \frac{1}{2} P(X = b)
 Las propiedades anteriores hacen de la función característica una herramienta poderosa en nuestro análisis. En particular, nos interesa su existencia universal, continuidad y capacidad para determinar unívocamente la distribución de una variable aleatoria.
  
 \begin{example}
+\label{}
 \textbf{Función característica de la distribución Cauchy}
 
 Para una variable aleatoria \( X \) con distribución Cauchy con parámetros de ubicación \( x_0 \) y escala \( \gamma \), la función de densidad de probabilidad es:
@@ -1455,7 +1509,8 @@ La prueba compara la distribución empírica de las $B_j$'s con la distribución
 \subsection{Distribuciones invariantes}
 %% Todos los parametros racionales son ciclos 
 En esta sección analizaremos el comportamiento del mapeo aplicado a variables aleatorias, es decir, el espacio de estados $E$ es ahora el conjunto de las variables aleatorias con soporte en $[0,1]$. El primer resultado que probaremos es el siguiente. 
-\begin{proposition}\label{prop:log_unif}
+\begin{proposition}
+\label{prop:log_unif}
 Si $X$ es una variable aleatoria con distribución $Beta\left(\frac{1}{2},\frac{1}{2}\right)$, entonces es invariante al mapeo logístico, es decir, la variable aleatoria $Y$ definida como  $$Y:=\phi(X)$$ con $\phi$ la función descrita por el mapeo logístico \ref{eq:log} también tiene distribución $Beta\left(\frac{1}{2},\frac{1}{2}\right)$.
 \end{proposition}
 % \begin{remark}
@@ -1479,7 +1534,7 @@ Si $X$ es una variable aleatoria con distribución $Beta\left(\frac{1}{2},\frac{
 Observemos que la función de distribución acumulada de $Y$ está dada por \begin{align*}
     F_Y(y)=P(Y\leq y)=P(\phi(X)\leq y)
 \end{align*}
-los valores de $X$ que hacen posible la desigualdad dentro de la probabilidad son aquellos que están antes de la primera intersección del mapeo con la horizontal $y$ y los que están después de la segunda intersección, pues el mapeo es creciente para $X\leq \frac{1}{2}$ y decreciente para $X>\frac{1}{2}$, véase la Figura \ref{fig:log_proof}. Así, calculando dichas intersecciones obtenemos que los valores son $X_1=\frac{1-\sqrt{1-y}}{2}$ y $X_2=\frac{1+\sqrt{1-y}}{2}$, quedando así 
+los valores de $X$ que hacen posible la desigualdad dentro de la probabilidad son aquellos que están antes de la primera intersección del mapeo con la horizontal $y$ y los que están después de la segunda intersección, pues el mapeo es creciente para $X\leq \frac{1}{2}$ y decreciente para $X>\frac{1}{2}$, véase la Figura \ref{fig:log_proof}. Así, calculando dichas intersecciones, obtenemos que los valores son $X_1=\frac{1-\sqrt{1-y}}{2}$ y $X_2=\frac{1+\sqrt{1-y}}{2}$, quedando así 
 \begin{align*}
     F_Y(y)=&F_X\left(\frac{1-\sqrt{1-y}}{2}\right)+\left[1-F_X\left(\frac{1+\sqrt{1-y}}{2}\right)\right]
 \end{align*}
@@ -1544,7 +1599,7 @@ Este mapeo al igual que el logístico \ref{eq:log} es conocido por su capacidad 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=12cm]{Tesis UNAM/graficas/Tent/tent_bif.png}
-    \caption{Bifrcaciones del mapeo tienda.}
+    \caption{Bifurcaciones del mapeo tienda.}
     \label{fig:bif-log}
 \end{figure} 
 
@@ -1553,7 +1608,8 @@ Este mapeo al igual que el logístico \ref{eq:log} es conocido por su capacidad 
 \subsubsection{Distribuciones invariantes al mapeo tienda}
 %% Todos los parametros racionales son ciclos 
 En esta sección se hace un análisis similar al del comportamiento del mapeo logístico con una densidad $Beta(\frac{1}{2},\frac{1}{2})$. La densidad uniforme es el punto fijo en este sistema.
-\begin{proposition}\label{prop:tent_unif}
+\begin{proposition}
+\label{prop:tent_unif}
 Si $X$ es una variable aleatoria con distribución uniforme en el intervalo $[0,1]$, entonces es invariante al mapeo tienda, es decir, la variable aleatoria $Y$ definida como  $$Y:=\phi(X)$$ con $\phi$ la función descrita por \ref{eq:tent} también tiene distribución uniforme en $[0,1]$.
 \end{proposition}
 \begin{proof}
