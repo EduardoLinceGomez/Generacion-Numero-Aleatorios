@@ -77,7 +77,7 @@
 % ================================================================
 % PAQUETES MATEMÁTICOS Y UTILIDADES
 % ================================================================
-\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsmath,amssymb}  %amsthm
 %\usepackage{physics,siunitx}  % Derivadas, unidades y notación física
 \usepackage{booktabs}         % Tablas profesionales
 \usepackage{multirow}         % Filas múltiples en tablas
@@ -201,7 +201,10 @@
 \newtcbtheorem[use counter from=definition]{demostracion}{Demostración}{styleProof}{pf}
 
 % Nombres para cleveref
-\crefname{definition}{definición}{definiciones}
+
+\crefname{table}{Tabla}{Tablas}
+
+\crefname{definition}{Definición}{definiciones}
 \Crefname{definition}{Definición}{Definiciones}
 
 \crefname{theorem}{teorema}{teoremas}
